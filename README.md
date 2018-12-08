@@ -25,13 +25,13 @@ This walkthrough takes a few minutes and is very basic but will cover the follow
 ### Install microk8s
 
 ```
-snap install microk8s --classic
+# snap install microk8s --classic
 
-microk8s.status --wait-ready
+# microk8s.status --wait-ready
 
 Turn on/enable DNS and Storage services in microk8s :
 
-microk8s.enable storage dns
+# microk8s.enable storage dns
 
 These are required for services which need to create volumes on the host and DNS is used for service discovery.
 ```
@@ -39,13 +39,13 @@ These are required for services which need to create volumes on the host and DNS
 ### Install Kompose
 
 ```
-curl -L https://github.com/kubernetes/kompose/releases/download/v1.17.0/kompose-linux-amd64 -o /usr/bin/kompose && chmod 777 /usr/bin/kompose
+# curl -L https://github.com/kubernetes/kompose/releases/download/v1.17.0/kompose-linux-amd64 -o /usr/bin/kompose && chmod 777 /usr/bin/kompose
 
 ```
 ### Translate docker-compose file to Kubernetes resources 
 
 ```
-kompose convert --file compose/docker-compose.yml
+# kompose convert --file compose/docker-compose.yml
 
 ```
 ### Start the Dogs vs Cats app 
@@ -53,19 +53,19 @@ kompose convert --file compose/docker-compose.yml
 The full code for the Dogs vs Cats app can be found [here](https://github.com/dockersamples/example-voting-app).
 
 ```
-kubectl create -f .
+# kubectl create -f .
 
 It'll take a few minutes for everything to start up. To watch progress run :
 
-watch kubectl get all --all-namespaces
+# watch kubectl get all --all-namespaces
 
 microk8s has it's own version of Docker installed inside the snap and you can use familiar docker commands to get logs, exec into containers etc.
 
-microk8s.docker ps
+# microk8s.docker ps
 
-microk8s.docker logs 
+# microk8s.docker logs 
 
-microk8s.docker exec -it 
+# microk8s.docker exec -it 
 
 ```
 ### Test it works 
@@ -73,7 +73,7 @@ microk8s.docker exec -it
 ```
 To find the ports being used by the vote and results services run :
 
-kubectl get all --all-namespaces
+# kubectl get all --all-namespaces
 
 Example Output :
 
@@ -91,18 +91,18 @@ Try clicking a Vote button and verify that the results % is updated.
 ### Remove microk8s
 
 ```
-snap remove microk8s
+# snap remove microk8s
 
 ```
 
 ### Remove Kompose 
 
 ```
-rm /usr/bin/kompose
+# rm /usr/bin/kompose
 
 ```
 
 
 # Summary
 
-This is a fairly quick and clean way to install a local Kubernetes, deploy a simple microservice example, verify it works and tear it down. Since microk8s has packaged up multiple versions of Kubernetes you could script this to verify your compose files work against multiple versions of Kubernetes.
+This is a fairly quick and clean way to install a local Kubernetes, deploy a simple microservice example, verify it works and tear it down. Since microk8s has packaged up multiple versions of Kubernetes you could script this to verify your compose files work against multiple versions of Kubernetes. 
