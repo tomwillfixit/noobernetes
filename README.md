@@ -4,7 +4,7 @@ Getting started with Kubernetes for absolute noobs (Approximately 5 minutes end-
 
 This walkthrough uses [microk8s](https://microk8s.io/) which is a [Snap](https://snapcraft.io/) based install of Kubernetes.
 
-We will use [Kompose](https://github.com/kubernetes/kompose) to translate a simple docker-compose file into Kubernetes resources. This requirement will be updated in future with the arrival of [Compose on Kubernetes](https://github.com/docker/compose-on-kubernetes), announced at [DockerCon EU 2018] (https://medium.com/@thomas.shaw78/dockercon-eu-2018-review-a5c6cd2344bf). 
+We will use [Kompose](https://github.com/kubernetes/kompose) to translate a simple docker-compose file into Kubernetes resources. This requirement will be updated in future with the arrival of [Compose on Kubernetes](https://github.com/docker/compose-on-kubernetes), announced at [DockerCon EU 2018](https://medium.com/@thomas.shaw78/dockercon-eu-2018-review-a5c6cd2344bf). 
 
 ## Why microk8s ?
 
@@ -20,6 +20,7 @@ This walkthrough takes a few minutes and is very basic but will cover the follow
 - Start the Dogs vs Cats app
 - Test it works
 - Remove microk8s
+- Remove Kompose
 
 ### Install microk8s
 
@@ -104,4 +105,4 @@ rm /usr/bin/kompose
 
 # Summary
 
-This is a fairly quick and clean way to install a local Kubernetes, deploy a simple microservice example,verify it works and tear it down.
+This is a fairly quick and clean way to install a local Kubernetes, deploy a simple microservice example, verify it works and tear it down. Since microk8s has packaged up multiple versions of Kubernetes you could script this to verify your compose files work against multiple versions of Kubernetes.
